@@ -17,7 +17,8 @@ public class OpenWeb {
     public OpenWeb () {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
+        //correr en modo headless para que puedan ejecutarse los tests via GitHub Actions
+        options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080");
 
         // Inicializa el WebDriver de Chrome
         this.driver = new ChromeDriver(options);
@@ -40,6 +41,10 @@ public class OpenWeb {
     public boolean checkUrl (String url) {
         String actualUrl = driver.getCurrentUrl();
         return url.equals(actualUrl);
+    }
+
+    public void closeBrowser () {
+        driver.close();
     }
 
 }

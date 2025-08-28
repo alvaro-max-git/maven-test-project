@@ -1,9 +1,11 @@
 package steps;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.After;
 import org.junit.Assert;
 import steps.webSelenium.OpenWeb;
 
@@ -35,8 +37,7 @@ public class Steps {
     }
 
     @Then("El usuario es redirigido a la pantalla Comics")
-    public void elUsuarioEsRedirigidoAPantallaComics (){
+    public void elUsuarioEsRedirigidoAPantallaComics () {
         Assert.assertTrue(openWeb.checkUrl(comicsURL));
     }
-
 }
